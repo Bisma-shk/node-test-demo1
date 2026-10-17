@@ -1,0 +1,19 @@
+name : NodeTest.js
+on :
+    push :
+      branchs : [main]
+jobs :
+  test:
+    run-on: ubuntu-latest
+    steps :
+        - name:'checkout'
+          uses:actions/checkout@v4
+        - name:'setup-node'
+          uses:actions/setup-node@v4
+            with:
+              node-version:'20'
+        - name:'install dependencies'
+          run: npm install
+
+        - name:"run test"
+          run: npm run test
